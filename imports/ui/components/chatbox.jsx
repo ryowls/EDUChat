@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import {Messages} from '../../api/messages/messages.js';
 import {createContainer} from 'meteor/react-meteor-data';
 import ChatFooter from './chatFooter.jsx';
-import MessageList from './messageList.jsx';
+import ChatBoxBody from './ChatBoxBody';
 
 export default class ChatBox extends React.Component {
     constructor(props) {
@@ -18,9 +18,7 @@ export default class ChatBox extends React.Component {
                 <nav className="navbar navbar-light bg-faded chat-nav">
                     <h1 className="navbar-brand mb-0">{this.props.room}</h1>
                 </nav>
-                <div className="chat-body" ref="messageList">
-                    <MessageList messages={this.props.messages}/>
-                </div>
+                <ChatBoxBody messages={this.props.messages}/>
                 <div className="chat-footer">
                     <ChatFooter nickName={this.state.name} room={this.props.room}/>
                 </div>
@@ -31,20 +29,6 @@ export default class ChatBox extends React.Component {
     setNickName(value) {
         this.setState({name: value});
     }
-    componentWillUpdate() {
-        {/* Determines if the user is close enough to the bottom to warrant
-          keeping the scroll locked. 10 Pixels gives a little leeway*/
-        }
-        this.shouldScrollBottom = Math.abs((this.refs.messageList.scrollTop + this.refs.messageList.offsetHeight) - this.refs.messageList.scrollHeight) <= 10
-    }
-    componentDidUpdate() {
-        {/* shouldScrollBottom doesn't need to be stored in state in order to
-        prevent any re-rendering.*/
-        }
-        if (this.shouldScrollBottom) {
-            this.refs.messageList.scrollTop = this.refs.messageList.scrollHeight;
-        }
-    }
 }
 
 ChatBox.propTypes = {
@@ -53,6 +37,6 @@ ChatBox.propTypes = {
 
 export default createContainer((params) => {
     return {
-        messages: Messages.find({room: params.room}).fetch()
+        messages: Messages.find({room: params.room}, { sort: { createdAt: 1 } }).fetch()
     }
 }, ChatBox);
