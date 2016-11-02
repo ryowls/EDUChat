@@ -1,7 +1,9 @@
 .message-wrapper {
 
 }
-
+.message-striped:nth-of-type(odd) {
+  background-color: rgba(0,0,0,.05);
+}
 .message-name {
 }
 

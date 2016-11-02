@@ -3,7 +3,7 @@ import React, {Component, PropTypes} from 'react';
 export default class Message extends React.Component {
     render() {
         return (
-            <ul className="list-group-item">
+            <ul className="list-group-item message-striped">
                 <div className="message-wrapper">
                     <div className="media">
                         <div className="media-body">

@@ -23,7 +23,7 @@ Messages.schema = new SimpleSchema({
   },
   text : {
     type: String,
-    max: 150
+    max: 300
   },
   room: {
     type: String,
@@ -32,6 +32,10 @@ Messages.schema = new SimpleSchema({
   createdAt: {
     type: Date,
     denyUpdate: true
+  },
+  pinned : {
+    type: Boolean,
+    optional: true
   }
 });
 

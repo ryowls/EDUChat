@@ -19,11 +19,11 @@ export default class ChatBox extends React.Component {
     render() {
         return (
             <div className="chat-wrapper full-height row">
-                <nav className="navbar navbar-light bg-faded">
-                    <h1 className="navbar-brand mb-0">Navbar</h1>
+                <nav className="navbar navbar-light bg-faded chat-nav">
+                    <h1 className="navbar-brand mb-0">{this.props.room}</h1>
                 </nav>
                 <div className="chat-body" ref="messageList">
-                    <ul className="list-group">
+                    <ul className="list-group list-striped">
                         {this.renderMessages()}
                     </ul>
                 </div>
