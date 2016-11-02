@@ -1,20 +1,16 @@
 import React, {PropTypes} from 'react';
-import Message from './message.jsx'
 import {Messages} from '../../api/messages/messages.js';
 import {createContainer} from 'meteor/react-meteor-data';
 import ChatFooter from './chatFooter.jsx';
-import NameModal from './nameModal.jsx'
+import MessageList from './messageList.jsx';
 
 export default class ChatBox extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: ''
+            name: 'Ryan'
         };
         this.setNickName = this.setNickName.bind(this);
-    }
-    renderMessages() {
-        return this.props.messages.map((message) => (<Message key={message._id} message={message}/>));
     }
     render() {
         return (
@@ -23,14 +19,12 @@ export default class ChatBox extends React.Component {
                     <h1 className="navbar-brand mb-0">{this.props.room}</h1>
                 </nav>
                 <div className="chat-body" ref="messageList">
-                    <ul className="list-group list-striped">
-                        {this.renderMessages()}
-                    </ul>
+                    <MessageList messages={this.props.messages}/>
                 </div>
                 <div className="chat-footer">
                     <ChatFooter nickName={this.state.name} room={this.props.room}/>
                 </div>
-                <NameModal nameSet={this.setNickName}/>
+                {/* <NameModal nameSet={this.setNickName}/> */}
             </div>
         )
     }
