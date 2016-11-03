@@ -1,5 +1,7 @@
 $chat-footer-height : 40px;
 
+
+// Chat Wrappers
 .chat-wrapper {
   display: flex;
   flex-direction: column;
@@ -23,5 +25,21 @@ $chat-footer-height : 40px;
   justify-content: flex-end;
 }
 
+
+// Message List
 .message-list {
+}
+
+
+// Message
+.message-wrapper {
+
+}
+.message-striped:nth-of-type(odd) {
+  background-color: rgba(0,0,0,.05);
+}
+.message-name {
+}
+
+.message-text {
 }
