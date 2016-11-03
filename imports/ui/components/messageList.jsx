@@ -8,7 +8,7 @@ export default class MessageList extends React.Component {
   render() {
       return (
           <div>
-              <ul className="list-group list-striped">
+              <ul className="message-list list-group list-striped">
                   {this.props.messages.map((message) => (<Message key={message._id} message={message}/>))}
               </ul>
           </div>

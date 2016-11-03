@@ -32,5 +32,4 @@ export default class ChatBoxBody extends React.Component {
             this.refs.messageList.scrollTop = this.refs.messageList.scrollHeight;
         }
     }
-
 }

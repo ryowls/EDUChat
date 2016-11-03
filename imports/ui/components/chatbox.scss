@@ -1,3 +1,5 @@
+$chat-footer-height : 40px;
+
 .chat-wrapper {
   display: flex;
   flex-direction: column;
@@ -7,18 +9,19 @@
 }
 
 .chat-body {
+    // this flex stuff gets the chat bar at the bottom.
   flex: 1 0 auto;
   flex-direction: column;
-  max-height: calc(100% - 40px - 45px - 0.5rem);
+  max-height: calc(100% - #{$chat-footer-height} - 45px - 0.5rem);
   flex-wrap: nowrap;
   overflow: auto;
 }
-.chat-nav {
-  // height: 45px;
-}
 
 .chat-footer {
-  height: 40px;
+  height: $chat-footer-height;
   flex: none;
   justify-content: flex-end;
+}
+
+.message-list {
 }
