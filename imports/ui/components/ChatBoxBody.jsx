@@ -10,26 +10,14 @@ export default class ChatBoxBody extends React.Component {
             return message.pinned == true;
         });
         return (
-            <div className="chat-body" ref="messageList">
+            <div className="chat-body">
                 {pinnedMessage !== undefined &&
-                    <p> {pinnedMessage.text}</p>
+                    <div className="alert alert-info" role="alert">
+                      <strong>{pinnedMessage.name}</strong> {pinnedMessage.text}
+                    </div>
                 }
                 <MessageList messages={this.props.messages}/>
             </div>
         )
-    }
-    componentWillUpdate() {
-        {/* Determines if the user is close enough to the bottom to warrant
-         keeping the scroll locked. 10 Pixels gives a little leeway*/
-        }
-        this.shouldScrollBottom = Math.abs((this.refs.messageList.scrollTop + this.refs.messageList.offsetHeight) - this.refs.messageList.scrollHeight) <= 10
-    }
-    componentDidUpdate() {
-        {/* shouldScrollBottom doesn't need to be stored in state in order to
-         prevent any sort of re-rendering.*/
-        }
-        if (this.shouldScrollBottom) {
-            this.refs.messageList.scrollTop = this.refs.messageList.scrollHeight;
-        }
     }
 }
